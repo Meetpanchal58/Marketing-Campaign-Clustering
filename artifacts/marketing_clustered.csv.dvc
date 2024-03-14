@@ -1,5 +1,5 @@
 outs:
-- md5: cf7007444e0e99310af648928306d13a
-  size: 292314
+- md5: 0761dc59621e9df39728595385605d26
+  size: 292192
   hash: md5
   path: marketing_clustered.csv
