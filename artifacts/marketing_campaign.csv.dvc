@@ -1,0 +1,5 @@
+outs:
+- md5: 3b624fc2bdbe29fa5fb01bdd577f78cd
+  size: 220188
+  hash: md5
+  path: marketing_campaign.csv

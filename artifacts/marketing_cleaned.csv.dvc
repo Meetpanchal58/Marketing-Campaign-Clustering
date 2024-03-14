@@ -1,0 +1,5 @@
+outs:
+- md5: b439e6a5cdb1383df26985ce289bca8b
+  size: 188652
+  hash: md5
+  path: marketing_cleaned.csv
