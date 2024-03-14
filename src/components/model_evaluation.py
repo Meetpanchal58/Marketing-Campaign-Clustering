@@ -20,9 +20,9 @@ class ModelEvaluation:
         logging.info("Model evaluation started")
         
         try:
-            dagshub.init(repo_owner='Meetpanchal58', repo_name='MLops-Project', mlflow=True)
+            dagshub.init(repo_owner='Meetpanchal58', repo_name='Customer-Segmentation-Clustering', mlflow=True)
             
-            remover_server_uri = "https://dagshub.com/Meetpanchal58/MLops-Project.mlflow"
+            remover_server_uri = "https://dagshub.com/Meetpanchal58/Customer-Segmentation-Clustering.mlflow"
             mlflow.set_tracking_uri(remover_server_uri)
 
             # Start MLflow run
