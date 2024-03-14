@@ -62,7 +62,7 @@ class Data_Cleaning(BaseEstimator, TransformerMixin):
             # Remove outliers
             X = X[(np.abs(zscore(X['Age'])) < 3) & (np.abs(zscore(X['Income'])) < 3)]
             X.reset_index(drop=True, inplace=True)
-            X.to_csv(r'C:\Users\meetp\Downloads\!PYTHON FILES\MLops-Project\artifacts\marketing_cleaned.csv', index=False)
+            X.to_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_cleaned.csv', index=False)
             #X.to_excel(r'C:\Users\meetp\Downloads\!PYTHON FILES\MLops-Project\artifacts\marketing_cleaned.xlsx', index=False)
 
             logging.info("Data cleaning completed")
@@ -113,7 +113,7 @@ class DataTransformation:
             logging.info("Data transformation pipeline is completed")
 
             transformed_data = pd.DataFrame(transformed_data)
-            transformed_data.to_csv(r'C:\Users\meetp\Downloads\!PYTHON FILES\MLops-Project\artifacts\marketing_encoded.csv',index=False, header=True)
+            transformed_data.to_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_encoded.csv',index=False, header=True)
             return transformed_data
 
         except Exception as e:

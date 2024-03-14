@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/meetp/%23PYTHON%20FILES/Customer%20Segmentation%20Clustering/mlruns/0/7116974a90a943b288c2fe6f24fe0ba8/artifacts
+end_time: 1710444385466
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7116974a90a943b288c2fe6f24fe0ba8
+run_name: Model Evaluation
+run_uuid: 7116974a90a943b288c2fe6f24fe0ba8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710444382570
+status: 3
+tags: []
+user_id: meetp

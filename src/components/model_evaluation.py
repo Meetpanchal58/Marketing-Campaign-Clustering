@@ -20,10 +20,8 @@ class ModelEvaluation:
         logging.info("Model evaluation started")
         
         try:
-            dagshub.init(repo_owner='Meetpanchal58', repo_name='Customer-Segmentation-Clustering', mlflow=True)
-            
-            remover_server_uri = "https://dagshub.com/Meetpanchal58/Customer-Segmentation-Clustering.mlflow"
-            mlflow.set_tracking_uri(remover_server_uri)
+            dagshub.init(repo_owner='Meetpanchal58', repo_name='Customer-Segmentation-Clustering', mlflow=True)  
+            mlflow.set_tracking_uri("mlruns")
 
             # Start MLflow run
             mlflow.start_run(run_name="Model Evaluation")
@@ -47,7 +45,7 @@ class ModelEvaluation:
             log_metric("KMeans Davies Bouldin Score", davies_bouldin)
 
             # Load data with clusters
-            cluster_df = pd.read_csv('C:/Users/meetp/Downloads/!PYTHON FILES/MLops-Project/artifacts/marketing_encoded.csv')
+            cluster_df = pd.read_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_encoded.csv')
             cluster_df['Cluster'] = kmeans_labels
 
             # Split data for classification
