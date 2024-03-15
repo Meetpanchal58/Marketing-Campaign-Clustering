@@ -8,10 +8,10 @@ from template.visualization import generate_cluster_plots
 st.set_page_config(layout="wide")
 
 # Load the pre-trained KMeans pipeline
-with open('src/FinalModel/kmeans_pipeline.pkl', 'rb') as f:
+with open('artifacts/kmeans_pipeline.pkl', 'rb') as f:
     loaded_pipeline = pickle.load(f)
 
-df = pd.read_excel('artifacts/marketing_clustered.xlsx')
+df = pd.read_excel('artifacts/marketing_clustered.csv')
 
 st.title('Customer Segmentation Prediction')
 with st.form(key='customer_form'):
