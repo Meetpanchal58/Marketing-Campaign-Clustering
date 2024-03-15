@@ -1,0 +1,14 @@
+stages:
+  training:
+    cmd: python src/ModelTesting/training.py
+    deps:
+      - src/ModelTesting/training.py
+      - src/components/data_ingestion.py
+      - src/components/data_transformation.py
+      - src/components/model_trainer.py
+      - src/components/model_evaluation.py
+    outs:
+      - artifacts/marketing_campaign.csv
+      - artifacts/marketing_cleaned.csv
+      - artifacts/marketing_encoded.csv
+      - artifacts/marketing_clustered.csv
