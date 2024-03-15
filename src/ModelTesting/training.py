@@ -15,7 +15,7 @@ class Training:
             data_ingestion = DataIngestion()
             data_ingestion.initiate_data_ingestion()
             
-            data = pd.read_csv('C:/Users/meetp/Downloads/!PYTHON FILES/MLops-Project/artifacts/marketing_campaign.csv',delimiter='\t')
+            data = pd.read_csv('C:/Users/meetp/#PYTHON FILES/Customer Segmentation Clustering/artifacts/marketing_campaign.csv')
 
             # Data Cleaning
             data_cleaning = DataCleaning()

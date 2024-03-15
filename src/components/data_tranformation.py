@@ -19,6 +19,7 @@ class Date_Encoding(BaseEstimator, TransformerMixin):
     def transform(self, X):
         X_copy = X.copy()
 
+        X_copy['Dt_Customer'] = pd.to_datetime(X_copy['Dt_Customer'])
         X_copy['Day_of_Joining'] = X_copy['Dt_Customer'].dt.day
         X_copy['Month_of_Joining'] = X_copy['Dt_Customer'].dt.month
         X_copy['Year_of_Joining'] = X_copy['Dt_Customer'].dt.year
@@ -63,7 +64,6 @@ class Data_Cleaning(BaseEstimator, TransformerMixin):
             X = X[(np.abs(zscore(X['Age'])) < 3) & (np.abs(zscore(X['Income'])) < 3)]
             X.reset_index(drop=True, inplace=True)
             X.to_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_cleaned.csv', index=False)
-            #X.to_excel(r'C:\Users\meetp\Downloads\!PYTHON FILES\MLops-Project\artifacts\marketing_cleaned.xlsx', index=False)
 
             logging.info("Data cleaning completed")
             return X
