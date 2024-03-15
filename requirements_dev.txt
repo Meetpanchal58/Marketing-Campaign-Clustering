@@ -12,6 +12,7 @@ openpyxl
 mlflow
 dagshub
 dvc
+apache-airflow
 
 # dev requirements -
 

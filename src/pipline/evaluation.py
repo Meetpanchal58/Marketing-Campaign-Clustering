@@ -1,5 +1,5 @@
 from src.logger.Logging import logging
-from src.ModelTesting.training import Training
+from src.pipline.training import Training
 from src.components.model_evaluation import ModelEvaluation
 from src.exception.exception import CustomException
 

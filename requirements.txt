@@ -6,5 +6,11 @@ kneed
 scikit-learn
 scipy
 streamlit
+ipykernel
+openpyxl
 mlflow
+dagshub
 dvc
+apache-airflow
+
+-e .

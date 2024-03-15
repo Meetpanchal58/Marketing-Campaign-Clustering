@@ -1,7 +1,7 @@
 import pandas as pd
 from src.logger.Logging import logging
 from src.components.data_ingestion import DataIngestion
-from src.components.data_tranformation import DataTransformation, DataCleaning
+from src.components.data_transformation import DataTransformation, DataCleaning
 from src.components.model_trainer import ModelTrainer
 from src.exception.exception import CustomException
 

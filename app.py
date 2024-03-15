@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 from datetime import datetime
-from src.components.data_tranformation import DataCleaning
+from src.components.data_transformation import DataCleaning
 from template.visualization import generate_cluster_plots
 
 st.set_page_config(layout="wide")

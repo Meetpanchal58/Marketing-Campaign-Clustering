@@ -1,0 +1,4 @@
+[core]
+    remote = mystorage
+['remote "mystorage"']
+    url = s3://customer-campaign-data/
