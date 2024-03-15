@@ -1,10 +1,10 @@
 import os
+import boto3
 from src.logger.Logging import logging
-from kaggle.api.kaggle_api_extended import KaggleApi
 from src.exception.exception import CustomException
 
 class DataIngestion:
-    def __init__(self, raw_data_path="artifacts/raw.csv"):
+    def __init__(self, raw_data_path="artifacts/marketing_campaign.csv"):
         self.raw_data_path = raw_data_path
 
     def initiate_data_ingestion(self):
@@ -16,28 +16,17 @@ class DataIngestion:
                 logging.info("Dataset already exists. Skipping data ingestion.")
                 return dataset_path
 
-            # Authenticate with Kaggle API
-            api = KaggleApi()
-            api.authenticate()
+            # AWS S3 details
+            bucket_name = 'meet-db'
+            object_key = 'marketing_campaign.csv'
+            download_path = os.path.join(os.getcwd(), "artifacts", "marketing_campaign.csv")
 
-            # Dataset details
-            dataset_name = "imakash3011/customer-personality-analysis"
+            # Download dataset from S3
+            s3 = boto3.resource('s3')
+            s3.Bucket(bucket_name).download_file(Key=object_key, Filename=download_path)
+            logging.info("Dataset downloaded successfully from S3")
 
-            # Download dataset
-            api.dataset_download_files(dataset_name, path=".", unzip=True)
-            logging.info("Dataset downloaded successfully")
-
-            # Create artifacts folder if it doesn't exist in the current directory
-            artifacts_path = os.path.join(os.getcwd(), "artifacts")
-            os.makedirs(artifacts_path, exist_ok=True)
-
-            # Move dataset to appropriate location
-            for file in os.listdir("."):
-                if file.endswith(".csv"):
-                    os.rename(os.path.join(".", file), os.path.join(artifacts_path, file))
-                    logging.info(f"Moved {file} to artifacts folder")
-
-            return os.path.join(artifacts_path, "customer-personality.csv")
+            return download_path
 
         except Exception as e:
             logging.exception("An error occurred during data ingestion")
