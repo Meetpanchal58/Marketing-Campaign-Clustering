@@ -1,6 +1,7 @@
-import pickle
-import pandas as pd
+import os
 from src.logger.Logging import logging
+from dataclasses import dataclass
+from src.utils.utils import save_model, load_csv
 from sklearn.pipeline import Pipeline
 from src.components.data_transformation import Date_Encoding
 from sklearn.preprocessing import RobustScaler, OneHotEncoder
@@ -10,15 +11,21 @@ from sklearn.cluster import KMeans
 from sklearn.base import BaseEstimator, TransformerMixin
 
 
+@dataclass
+class Final_Pipline_Config:
+    model_file_path=os.path.join('artifacts','kmeans_pipeline.pkl')
+    cleaned_file_path = os.path.join('artifacts','marketing_cleaned.csv')
+
+
 class PipelineBuilder(BaseEstimator, TransformerMixin):
     def __init__(self):
-        pass
+        self.Final_Pipline_config=Final_Pipline_Config()
 
     def fit(self):
         logging.info("Fitting the pipeline...")
         try:
             # Load data
-            data = pd.read_csv('C:/Users/meetp/#PYTHON FILES/Customer Segmentation Clustering/artifacts/marketing_cleaned.csv')
+            data = load_csv(self.Final_Pipline_config.cleaned_file_path)
 
             pipeline = Pipeline([
                 ('date_transformer', Date_Encoding()), 
@@ -30,9 +37,13 @@ class PipelineBuilder(BaseEstimator, TransformerMixin):
                 ('kmeans', KMeans(n_clusters=3, random_state=0, init='k-means++'))
             ])
             pipeline.fit(data)
-
-            with open('C:/Users/meetp/#PYTHON FILES/Customer Segmentation Clustering/artifacts/kmeans_pipeline.pkl', 'wb') as f:
-                pickle.dump(pipeline, f)
+            
+            save_model(
+                file_path=self.Final_Pipline_config.model_file_path,
+                obj=pipeline
+            )
+            #with open('C:/Users/meetp/#PYTHON FILES/Customer Segmentation Clustering/artifacts/kmeans_pipeline.pkl', 'wb') as f:
+                #pickle.dump(pipeline, f)
 
             logging.info("Pipeline fitting completed.")
             return pipeline

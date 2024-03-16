@@ -1,12 +1,22 @@
+import os
 import pandas as pd
 import numpy as np
+from dataclasses import dataclass
 from src.logger.Logging import logging
+from src.utils.utils import save_csv
 from sklearn.pipeline import Pipeline
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import OneHotEncoder 
 from sklearn.compose import ColumnTransformer
 from scipy.stats import zscore
 from src.exception.exception import CustomException
+
+
+@dataclass
+class DataTransformationConfig:
+    cleaned_file_path=os.path.join('artifacts','marketing_cleaned.csv')
+    encoded_file_path=os.path.join('artifacts','marketing_encoded.csv')
+
 
 
 class Date_Encoding(BaseEstimator, TransformerMixin):
@@ -30,7 +40,7 @@ class Date_Encoding(BaseEstimator, TransformerMixin):
 
 class Data_Cleaning(BaseEstimator, TransformerMixin):
     def __init__(self):
-        pass
+        self.data_transformation_config=DataTransformationConfig()
 
     def fit(self, X, y=None):
         return self
@@ -63,7 +73,11 @@ class Data_Cleaning(BaseEstimator, TransformerMixin):
             # Remove outliers
             X = X[(np.abs(zscore(X['Age'])) < 3) & (np.abs(zscore(X['Income'])) < 3)]
             X.reset_index(drop=True, inplace=True)
-            X.to_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_cleaned.csv', index=False)
+            #X.to_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_cleaned.csv', index=False)
+            save_csv(
+                file_path=self.data_transformation_config.cleaned_file_path,
+                data=X
+            )
 
             logging.info("Data cleaning completed")
             return X
@@ -97,7 +111,7 @@ class DataCleaning:
 
 class DataTransformation:
     def __init__(self):
-        pass
+        self.data_transformation_config=DataTransformationConfig()
 
     def transform_data_pipeline(self, df):
         try:
@@ -113,7 +127,12 @@ class DataTransformation:
             logging.info("Data transformation pipeline is completed")
 
             transformed_data = pd.DataFrame(transformed_data)
-            transformed_data.to_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_encoded.csv',index=False, header=True)
+            #transformed_data.to_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_encoded.csv',index=False, header=True)
+            save_csv(
+                file_path=self.data_transformation_config.encoded_file_path,
+                data=transformed_data
+            )
+
             return transformed_data
 
         except Exception as e:

@@ -1,13 +1,20 @@
+import os
 import pandas as pd
+from dataclasses import dataclass
 from src.logger.Logging import logging
+from src.utils.utils import load_csv
 from src.components.data_ingestion import DataIngestion
 from src.components.data_transformation import DataTransformation, DataCleaning
 from src.components.model_trainer import ModelTrainer
 from src.exception.exception import CustomException
 
+@dataclass
+class DataTransformationConfig:
+    raw_file_path=os.path.join('artifacts','marketing_campaign.csv')
+
 class Training:
     def __init__(self):
-        pass
+        self.data_transformation_config=DataTransformationConfig()
 
     def run_training(self):
         try:
@@ -15,7 +22,8 @@ class Training:
             data_ingestion = DataIngestion()
             data_ingestion.initiate_data_ingestion()
             
-            data = pd.read_csv('C:/Users/meetp/#PYTHON FILES/Customer Segmentation Clustering/artifacts/marketing_campaign.csv')
+            #data = pd.read_csv('C:/Users/meetp/#PYTHON FILES/Customer Segmentation Clustering/artifacts/marketing_campaign.csv')
+            data = load_csv(self.data_transformation_config.raw_file_path)
 
             # Data Cleaning
             data_cleaning = DataCleaning()

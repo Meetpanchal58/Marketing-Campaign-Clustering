@@ -1,7 +1,10 @@
+import os
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from src.logger.Logging import logging
+from src.utils.utils import load_csv
+from dataclasses import dataclass
 import dagshub
 import mlflow
 import mlflow.sklearn
@@ -12,9 +15,14 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from src.exception.exception import CustomException
 
+@dataclass
+class ModelevaluationrConfig:
+    encoded_file_path=os.path.join('artifacts','marketing_encoded.csv')
+
+
 class ModelEvaluation:
     def __init__(self):
-        pass
+        self.model_evaluation_config=ModelevaluationrConfig()
 
     def evaluate_model(self, pca_df, kmeans_labels):
         logging.info("Model evaluation started")
@@ -45,7 +53,9 @@ class ModelEvaluation:
             log_metric("KMeans Davies Bouldin Score", davies_bouldin)
 
             # Load data with clusters
-            cluster_df = pd.read_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_encoded.csv')
+            #cluster_df = pd.read_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_encoded.csv')
+            cluster_df = load_csv(self.model_evaluation_config.encoded_file_path)
+
             cluster_df['Cluster'] = kmeans_labels
 
             # Split data for classification
