@@ -14,7 +14,6 @@ class DataIngestion:
             # AWS S3 details
             bucket_name = 'meet-db'
             object_key = 'marketing_campaign.csv'
-
             # Load dataset from S3
             s3 = boto3.resource('s3')
             obj = s3.Bucket(bucket_name).Object(object_key).get()
