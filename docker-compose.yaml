@@ -4,16 +4,21 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile.airflow
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
     image: airflowimage
     container_name: customer-segmentation-airflow
     ports:
       - "8080:8080"
+
     
-  streamlitapp:
-    build:
-      context: ./
-      dockerfile: Dockerfile.streamlit
-    image: streamlitimage
-    container_name: customer-segmentation-streamlit
-    ports:
-      - "8501:8501"
+#  streamlitapp:
+#    build:
+#      context: ./
+#      dockerfile: Dockerfile.streamlit
+#    image: streamlitimage
+#    container_name: customer-segmentation-streamlit
+#    ports:
+#      - "8501:8501"

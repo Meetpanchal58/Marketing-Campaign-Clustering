@@ -42,8 +42,6 @@ class PipelineBuilder(BaseEstimator, TransformerMixin):
                 file_path=self.Final_Pipline_config.model_file_path,
                 obj=pipeline
             )
-            #with open('C:/Users/meetp/#PYTHON FILES/Customer Segmentation Clustering/artifacts/kmeans_pipeline.pkl', 'wb') as f:
-                #pickle.dump(pipeline, f)
 
             logging.info("Pipeline fitting completed.")
             return pipeline

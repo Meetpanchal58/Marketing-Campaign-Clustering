@@ -3,10 +3,16 @@ import boto3
 import pandas as pd
 from src.logger.Logging import logging
 from src.exception.exception import CustomException
+from src.utils.utils import save_csv
+from dataclasses import dataclass
+
+@dataclass
+class DataIngestionConfig:
+    raw_file_path=os.path.join('artifacts','marketing_campaign.csv')
 
 class DataIngestion:
-    def __init__(self, raw_data_path="artifacts/marketing_campaign.csv"):
-        self.raw_data_path = raw_data_path
+    def __init__(self):
+        self.data_ingestion_config = DataIngestionConfig()
 
     def initiate_data_ingestion(self):
         logging.info("Data ingestion started")
@@ -20,12 +26,14 @@ class DataIngestion:
             df = pd.read_csv(obj['Body'], delimiter="\t")
             logging.info("Dataset loaded successfully from S3")
 
-            # Save dataset to local "artifacts" folder (optional)
-            dataset_path = os.path.join("artifacts", "marketing_campaign.csv")
-            df.to_csv(dataset_path, index=False)
+            save_csv(
+                file_path=self.data_ingestion_config.raw_file_path,
+                data=df             
+            )
+            
             logging.info("Dataset saved to local artifacts folder")
 
-            return dataset_path
+            return df
 
         except Exception as e:
             logging.exception("An error occurred during data ingestion")
