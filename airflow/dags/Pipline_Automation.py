@@ -2,6 +2,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 import subprocess
 import pendulum
+import numpy as np
 from src.components.data_ingestion import DataIngestion
 from src.components.data_cleaning import DataCleaning
 from src.components.data_transformation import DataTransformation
@@ -46,8 +47,8 @@ def Run_Model_trainer_pipline(**kwargs):
         df = kwargs['ti'].xcom_pull(key='encoded_df')
         model_trainer = ModelTrainer()
         pca_df, kmeans_labels = model_trainer.train_model(df)
-        #pca_df = pca_df.to_dict(orient='records')
-        #kmeans_labels = kmeans_labels.tolist()
+        pca_df = pca_df.applymap(lambda x: x.tolist() if isinstance(x, np.ndarray) else x)
+        kmeans_labels = kmeans_labels.tolist()
         kwargs['ti'].xcom_push(key='pca_df', value=pca_df)
         kwargs['ti'].xcom_push(key='kmeans_labels', value=kmeans_labels)
      
