@@ -17,12 +17,6 @@ class DataIngestion:
 
             # Load dataset from S3
             s3 = boto3.resource('s3')
-            s3 = boto3.resource(
-                service_name='s3',
-                region_name='ap-south-1',
-                aws_access_key_id='AKIAQUR74AQMPIKEKQQA',
-                aws_secret_access_key='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'
-            )
             obj = s3.Bucket(bucket_name).Object(object_key).get()
             df = pd.read_csv(obj['Body'], delimiter="\t")
             logging.info("Dataset loaded successfully from S3")
