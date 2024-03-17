@@ -2,12 +2,9 @@ numpy
 pandas
 matplotlib
 seaborn
-kneed
 scikit-learn
-scipy
 streamlit
-ipykernel
-openpyxl
+scipy
 mlflow
 dagshub
 dvc
