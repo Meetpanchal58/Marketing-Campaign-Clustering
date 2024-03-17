@@ -2,7 +2,6 @@ import streamlit as st
 import pickle
 import pandas as pd
 from datetime import datetime
-from src.components.data_transformation import DataCleaning
 from template.visualization import generate_cluster_plots
 
 st.set_page_config(layout="wide")
@@ -11,7 +10,7 @@ st.set_page_config(layout="wide")
 with open('artifacts/kmeans_pipeline.pkl', 'rb') as f:
     loaded_pipeline = pickle.load(f)
 
-df = pd.read_excel('artifacts/marketing_clustered.csv')
+df = pd.read_csv('artifacts/marketing_clustered.csv')
 
 st.title('Customer Segmentation Prediction')
 with st.form(key='customer_form'):
