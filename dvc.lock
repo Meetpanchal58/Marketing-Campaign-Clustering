@@ -5,12 +5,12 @@ stages:
     deps:
     - path: src/components/data_ingestion.py
       hash: md5
-      md5: 4ce24de23cbb819eef50ab37c5d3fa19
-      size: 1343
+      md5: b5070a1132765c858d33f07456009155
+      size: 1446
     - path: src/components/data_transformation.py
       hash: md5
-      md5: 99d8f7c1f0f049671e4cdd865577e494
-      size: 5226
+      md5: b57ae0c919827996b5a02457eec0df2a
+      size: 2470
     - path: src/components/model_trainer.py
       hash: md5
       md5: e06d1b72f23da07d789b6d556a3a568d
@@ -26,9 +26,9 @@ stages:
       size: 188652
     - path: artifacts/marketing_clustered.csv
       hash: md5
-      md5: d5c881d98e9a502166126c6e3b26cd8e
-      size: 282278
+      md5: f9b69a2e96e05c1df14963916b5e70fa
+      size: 193118
     - path: artifacts/marketing_encoded.csv
       hash: md5
-      md5: cf998845d555d962356d20374fc48b12
-      size: 306165
+      md5: 63a96dcf4c285f7ea6fcbe84375dff90
+      size: 304682
