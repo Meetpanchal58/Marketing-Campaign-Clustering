@@ -53,6 +53,7 @@ jobs:
           IMAGE_TAG: latest
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          eval ${{ steps.login-ecr.outputs.login-command }}
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
