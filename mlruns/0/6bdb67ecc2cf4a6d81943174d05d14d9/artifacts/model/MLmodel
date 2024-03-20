@@ -1,0 +1,43 @@
+artifact_path: model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.6
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.4.1.post1
+mlflow_version: 2.11.1
+model_size_bytes: 393654
+model_uuid: 7fd3edf876954a159f211b1deb3634fe
+run_id: 6bdb67ecc2cf4a6d81943174d05d14d9
+signature:
+  inputs: '[{"type": "double", "name": "0", "required": true}, {"type": "double",
+    "name": "1", "required": true}, {"type": "double", "name": "2", "required": true},
+    {"type": "double", "name": "3", "required": true}, {"type": "double", "name":
+    "4", "required": true}, {"type": "double", "name": "5", "required": true}, {"type":
+    "double", "name": "6", "required": true}, {"type": "double", "name": "7", "required":
+    true}, {"type": "double", "name": "8", "required": true}, {"type": "double", "name":
+    "9", "required": true}, {"type": "double", "name": "10", "required": true}, {"type":
+    "double", "name": "11", "required": true}, {"type": "double", "name": "12", "required":
+    true}, {"type": "double", "name": "13", "required": true}, {"type": "double",
+    "name": "14", "required": true}, {"type": "double", "name": "15", "required":
+    true}, {"type": "double", "name": "16", "required": true}, {"type": "double",
+    "name": "17", "required": true}, {"type": "double", "name": "18", "required":
+    true}, {"type": "double", "name": "19", "required": true}, {"type": "double",
+    "name": "20", "required": true}, {"type": "double", "name": "21", "required":
+    true}, {"type": "double", "name": "22", "required": true}, {"type": "double",
+    "name": "23", "required": true}, {"type": "double", "name": "24", "required":
+    true}, {"type": "double", "name": "25", "required": true}, {"type": "double",
+    "name": "26", "required": true}, {"type": "double", "name": "27", "required":
+    true}, {"type": "double", "name": "28", "required": true}, {"type": "double",
+    "name": "29", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int32", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2024-03-20 21:00:26.177409'

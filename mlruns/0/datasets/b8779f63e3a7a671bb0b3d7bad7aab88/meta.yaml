@@ -1,0 +1,26 @@
+digest: 4b2f67f4
+name: dataset
+profile: '{"num_rows": 558, "num_elements": 16740}'
+schema: '{"mlflow_colspec": [{"type": "double", "name": "0", "required": true}, {"type":
+  "double", "name": "1", "required": true}, {"type": "double", "name": "2", "required":
+  true}, {"type": "double", "name": "3", "required": true}, {"type": "double", "name":
+  "4", "required": true}, {"type": "double", "name": "5", "required": true}, {"type":
+  "double", "name": "6", "required": true}, {"type": "double", "name": "7", "required":
+  true}, {"type": "double", "name": "8", "required": true}, {"type": "double", "name":
+  "9", "required": true}, {"type": "double", "name": "10", "required": true}, {"type":
+  "double", "name": "11", "required": true}, {"type": "double", "name": "12", "required":
+  true}, {"type": "double", "name": "13", "required": true}, {"type": "double", "name":
+  "14", "required": true}, {"type": "double", "name": "15", "required": true}, {"type":
+  "double", "name": "16", "required": true}, {"type": "double", "name": "17", "required":
+  true}, {"type": "double", "name": "18", "required": true}, {"type": "double", "name":
+  "19", "required": true}, {"type": "double", "name": "20", "required": true}, {"type":
+  "double", "name": "21", "required": true}, {"type": "double", "name": "22", "required":
+  true}, {"type": "double", "name": "23", "required": true}, {"type": "double", "name":
+  "24", "required": true}, {"type": "double", "name": "25", "required": true}, {"type":
+  "double", "name": "26", "required": true}, {"type": "double", "name": "27", "required":
+  true}, {"type": "double", "name": "28", "required": true}, {"type": "double", "name":
+  "29", "required": true}]}'
+source: '{"tags": {"mlflow.user": "02bd53448d50187e28cc842d2ae4f656e0c93b62", "mlflow.source.name":
+  "c:/Users/meetp/#PYTHON FILES/Customer Segmentation Clustering/src/pipline/full_pipline.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "9903a43b5278b085d714fd44ae3538e8969307a2"}}'
+source_type: code

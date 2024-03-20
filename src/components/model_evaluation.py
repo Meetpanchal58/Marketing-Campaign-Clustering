@@ -30,12 +30,14 @@ class ModelEvaluation:
         logging.info("Model evaluation started")
         
         try:
-            dagshub.init(repo_owner='Meetpanchal58', repo_name='Customer-Segmentation-Clustering', mlflow=True)  
+            dagshub.init("Marketing-Campaign-Clustering", "Meetpanchal58", mlflow=True)
+            #dagshub.init(repo_owner='Meetpanchal58', repo_name='Marketing-Campaign-Clustering', mlflow=True)  
             mlflow.set_tracking_uri("mlruns")
+            mlflow.set_tracking_uri("https://dagshub.com/Meetpanchal58/Marketing-Campaign-Clustering.mlflow")
 
             # Start MLflow run
             mlflow.start_run(run_name="Model Evaluation")
-
+ 
             # Plot clustering results
             plt.figure(figsize=(8, 8))
             ax = sns.scatterplot(x="PCA1", y="PCA2", hue="Cluster", data=pca_df, palette=['red', 'green', 'blue'])
@@ -55,7 +57,6 @@ class ModelEvaluation:
             log_metric("KMeans Davies Bouldin Score", davies_bouldin)
 
             # Load data with clusters
-            #cluster_df = pd.read_csv(r'C:\Users\meetp\#PYTHON FILES\Customer Segmentation Clustering\artifacts\marketing_encoded.csv')
             cluster_df = load_csv(self.model_evaluation_config.encoded_file_path)
 
             cluster_df['Cluster'] = kmeans_labels

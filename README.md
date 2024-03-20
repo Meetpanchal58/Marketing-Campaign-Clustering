@@ -1,6 +1,6 @@
 # Customer Segmentation using Clustering
 
-export MLFLOW_TRACKING_URI=https://dagshub.com/Meetpanchal58/Customer-Segmentation-Clustering.mlflow
+export MLFLOW_TRACKING_URI=https://dagshub.com/Meetpanchal58/Marketing-Campaign-Clustering.mlflow
 export MLFLOW_TRACKING_USERNAME=Meetpanchal58
-export MLFLOW_TRACKING_PASSWORD=a91c955472f50a3d95a3f625e0940b035af2f3c5
-python src/ModelTesting/prediction.py
+export MLFLOW_TRACKING_PASSWORD=dc99b165db9ae73b20540965cc21d4222f82fc11
+python src/pipeline/full_pipline.py
