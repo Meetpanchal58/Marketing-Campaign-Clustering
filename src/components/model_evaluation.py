@@ -32,7 +32,8 @@ class ModelEvaluation:
         try:
             dagshub.init(repo_owner='Meetpanchal58', repo_name='Marketing-Campaign-Clustering', mlflow=True)  
 
-            #mlflow.set_tracking_uri("https://dagshub.com/Meetpanchal58/Marketing-Campaign-Clustering.mlflow")
+            #mlflow.set_tracking_uri("mlruns")
+            #mlflow.set_tracking_uri("mlruns")
 
             # Start MLflow run
             mlflow.start_run(run_name="Model Evaluation")
