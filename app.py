@@ -1,16 +1,15 @@
 import streamlit as st
-import pickle
+from src.utils.utils import load_model, load_csv
 import pandas as pd
 from datetime import datetime
 from template.visualization import generate_cluster_plots
 
 st.set_page_config(layout="wide")
 
-# Load the pre-trained KMeans pipeline
-with open('artifacts/kmeans_pipeline.pkl', 'rb') as f:
-    loaded_pipeline = pickle.load(f)
+pipeline = load_model('artifacts/GradientBoosting_pipeline.pkl')
+#pipeline = load_model('artifacts/kmeans_pipeline.pkl')
 
-df = pd.read_csv('artifacts/marketing_clustered.csv')
+df = load_csv('artifacts/marketing_clustered.csv')
 
 st.title('Customer Segmentation Prediction')
 with st.form(key='customer_form'):
@@ -92,7 +91,7 @@ if submitted:
     })
 
     # Predict the cluster
-    cluster = loaded_pipeline.predict(data)[0]
+    cluster = pipeline.predict(data)[0]
 
     # Show the predicted cluster
     cluster_description = {

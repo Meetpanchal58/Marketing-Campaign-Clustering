@@ -13,6 +13,8 @@ from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bo
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.naive_bayes import GaussianNB
 from src.exception.exception import CustomException
 
 @dataclass
@@ -66,7 +68,9 @@ class ModelEvaluation:
             # Classification models
             models = {
                 "RandomForest": RandomForestClassifier(criterion="entropy"),
-                "DecisionTree": DecisionTreeClassifier(criterion="entropy")
+                "DecisionTree": DecisionTreeClassifier(criterion="entropy"),
+                "NaiveBayes": GaussianNB(),  
+                "GradientBoosting": GradientBoostingClassifier()
             }
 
             for name, model in models.items():
