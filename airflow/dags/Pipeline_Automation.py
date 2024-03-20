@@ -8,7 +8,7 @@ from src.components.data_cleaning import DataCleaning
 from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer 
 from src.components.model_evaluation import ModelEvaluation
-from src.pipline.Pipline_pkl import PipelineBuilder
+from src.pipeline.Pipeline_pkl import PipelineBuilder
 
 with DAG(
     "Clustering_Complete_pipeline",
