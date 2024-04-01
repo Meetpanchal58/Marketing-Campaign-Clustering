@@ -20,7 +20,8 @@ s3 = boto3.resource(
     aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
     aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY']
 )
-s3 = boto3.resource('s3')
+
+#s3 = boto3.resource('s3')
 obj = s3.Bucket('meet-db').Object('marketing_clustered.csv').get()
 df = pd.read_csv(obj['Body'])
 
