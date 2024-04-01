@@ -16,10 +16,6 @@ file_id = '1At-7l2cpGHr98hciy1v2ijegwhykYRgG'
 download_link = f'https://drive.google.com/uc?id={file_id}'
 df = pd.read_csv(download_link)
 
-# Read the CSV file from S3 into a DataFrame
-with obj.get() as stream:
-    df = pd.read_csv(stream['Body'])
-
 st.title('Customer Segmentation Prediction')
 with st.form(key='customer_form'):
     # Year of Birth
