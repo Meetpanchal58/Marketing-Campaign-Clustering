@@ -11,17 +11,10 @@ st.set_page_config(layout="wide")
 pipeline = load_model('artifacts/GradientBoosting_pipeline.pkl')
 #pipeline = load_model('artifacts/kmeans_pipeline.pkl')
 
-# Importing data from AWS S3 cloud
-s3 = boto3.resource(
-    service_name='s3',
-    region_name='ap-south-1',
-    aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
-    aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')
-)
-
-# Access the S3 bucket and object
-bucket = s3.Bucket('meet-db')
-obj = bucket.Object('marketing_clustered.csv')
+# Importing data from Gdrive
+file_id = '1At-7l2cpGHr98hciy1v2ijegwhykYRgG'
+download_link = f'https://drive.google.com/uc?id={file_id}'
+df = pd.read_csv(download_link)
 
 # Read the CSV file from S3 into a DataFrame
 with obj.get() as stream:
