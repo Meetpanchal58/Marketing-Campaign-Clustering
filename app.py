@@ -1,6 +1,7 @@
 import streamlit as st
 from src.utils.utils import load_model, load_csv
 import pandas as pd
+import boto3
 from datetime import datetime
 from template.visualization import generate_cluster_plots
 
@@ -9,7 +10,10 @@ st.set_page_config(layout="wide")
 pipeline = load_model('artifacts/GradientBoosting_pipeline.pkl')
 #pipeline = load_model('artifacts/kmeans_pipeline.pkl')
 
-df = load_csv('artifacts/marketing_clustered.csv')
+# Importing data from AWS S3 cloud
+s3 = boto3.resource('s3')
+obj = s3.Bucket('meet-db').Object('marketing_clustered.csv').get()
+df = pd.read_csv(obj['Body'])
 
 st.title('Customer Segmentation Prediction')
 with st.form(key='customer_form'):
