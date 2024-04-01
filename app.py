@@ -12,18 +12,20 @@ pipeline = load_model('artifacts/GradientBoosting_pipeline.pkl')
 #pipeline = load_model('artifacts/kmeans_pipeline.pkl')
 
 # Importing data from AWS S3 cloud
-s3 = boto3.client('s3')
-
 s3 = boto3.resource(
     service_name='s3',
     region_name='ap-south-1',
-    aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY']
+    aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
+    aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')
 )
 
-#s3 = boto3.resource('s3')
-obj = s3.Bucket('meet-db').Object('marketing_clustered.csv').get()
-df = pd.read_csv(obj['Body'])
+# Access the S3 bucket and object
+bucket = s3.Bucket('meet-db')
+obj = bucket.Object('marketing_clustered.csv')
+
+# Read the CSV file from S3 into a DataFrame
+with obj.get() as stream:
+    df = pd.read_csv(stream['Body'])
 
 st.title('Customer Segmentation Prediction')
 with st.form(key='customer_form'):
