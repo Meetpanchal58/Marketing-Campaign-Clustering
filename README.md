@@ -1,4 +1,4 @@
-## Marketing Campaign Clustering
+# Marketing Campaign Clustering
 
 ### Overview
 - This project focuses on clustering customers based on their personal details, product spending, platform purchases, and responses to promotional campaigns. The goal is to identify target customers for various products and campaigns, optimizing resource allocation and reducing marketing costs.
