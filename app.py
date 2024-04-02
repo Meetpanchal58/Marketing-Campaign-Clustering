@@ -16,7 +16,7 @@ file_id = '1At-7l2cpGHr98hciy1v2ijegwhykYRgG'
 download_link = f'https://drive.google.com/uc?id={file_id}'
 df = pd.read_csv(download_link)
 
-st.title('Customer Segmentation Prediction')
+st.title('Marketing Campaign with Clustering')
 with st.form(key='customer_form'):
     # Year of Birth
     Age = st.number_input('Age', min_value=0, max_value=90)
