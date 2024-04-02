@@ -22,11 +22,10 @@
 - Airflow (Pipeline Orchestation )
 - Github Actions CI/CD
 - AWS (Amazon Web Services)
+- S3 Bucket (Data Storage)
 - ECR (Elastic Container Registry)
 - EC2 (Elastic Compute Cloud)
 - Streamlit Cloud
 
-export MLFLOW_TRACKING_URI=https://dagshub.com/Meetpanchal58/Marketing-Campaign-Clustering.mlflow
-python src/pipeline/full_pipline.py
-
-deployment - https://marketing-campaign-clustering.streamlit.app/
+### Deployment
+Live - https://marketing-campaign-clustering.streamlit.app/
